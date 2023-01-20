@@ -10,5 +10,5 @@ num=${#array[@]}
 
 for((i=0;i<num;i=$(($i+1))))
 {
-  kubectl exec ${array[i]} -n openwhisk -- cat /tmp/pull.logs > ../res/${array[i]}.log
+  kubectl exec ${array[i]} -n openwhisk -- cat /tmp/pull.logs > ../res/${array[i]}.log &
 }
