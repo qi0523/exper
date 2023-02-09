@@ -5,6 +5,6 @@ function main(array $args) : array
     $name = $args["name"] ?? "stranger";
     $greeting = "Hello $name!";
     echo $greeting;
-    usleep((1.8 + $start_time - microtime(true)) * 1000000);
+    usleep((1.7 + $start_time - microtime(true)) * 1000000);
     return ["greeting" => $greeting];
 }
