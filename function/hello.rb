@@ -1,7 +1,7 @@
 def main(args)
-    name = args["name"] || 0
+    name = args["time"] || 0
 
-    if name == 0
+    if name != 0
       sleep(name / 1000.0)
     else
       random = rand(0..99) # 生成0到99的随机数

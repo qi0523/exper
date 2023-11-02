@@ -1,6 +1,5 @@
 package main
 
-import "log"
 import "time"
 import "math/rand"
 
