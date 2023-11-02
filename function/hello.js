@@ -12,7 +12,7 @@ function sleepRandomDuration(callback) {
         const sleepDuration = Math.floor(Math.random() * 901) + 100; // 100ms到1s的随机数
         sleep(sleepDuration, callback);
     } else { // 20%的概率
-        const sleepDuration = Math.floor(Math.random() * 1001) + 1000; // 1s到2s的随机数
+        const sleepDuration = Math.floor(Math.random() * 2001) + 1000; // 1s到3s的随机数
         sleep(sleepDuration, callback);
     }
 }
@@ -24,15 +24,17 @@ function sleepRandomDuration(callback) {
  function main(params) {
   
     // if a value for name is provided, use it else use a default
-    var name = params.name || 'stranger';
-  
-    // if a value for place is provided, use it else use a default
-    var place = params.place || 'somewhere';
 
-    sleepRandomDuration(() => {
-        // log the parameters to stdout
-        console.log('params:', params);
-    });
+    if (params.time !== undefined && params.time != null) {
+        sleep(params.time, () => {
+            console.log("OK");
+        });
+    } else {
+        sleepRandomDuration(() => {
+            // log the parameters to stdout
+            console.log('params:', params);
+        });
+    }
     // construct the message using the values for name and place
-    return {msg:  'Hello, ' + name + ' from ' + place + '!'};
+    return {msg:  'Hello, World'};
   }

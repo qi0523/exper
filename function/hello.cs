@@ -18,13 +18,38 @@ namespace Apache.OpenWhisk.Example.Dotnet
     {
         public JObject Main(JObject args)
         {
-            string name = "stranger";
-            if (args.ContainsKey("name")) {
-                name = args["name"].ToString();
+            int name = 0;
+            if (args.ContainsKey("time")) {
+                name = Convert.ToInt32(args["time"].ToString());
             }
+
+            if (name != 0) {
+                Thread.Sleep(name);
+            } else {
+                Random random = new Random();
+                int randomNumber = random.Next(100); // 生成0到99的随机数
+
+                int sleepDuration;
+                if (randomNumber < 20) // 20%的概率
+                {
+                    sleepDuration = random.Next(1, 101); // 1ms到100ms的随机数
+                }
+                else if (randomNumber < 80) // 60%的概率
+                {
+                    sleepDuration = random.Next(100, 1001); // 100ms到1s的随机数
+                }
+                else // 20%的概率
+                {
+                    sleepDuration = random.Next(1000, 3001); // 1s到2s的随机数
+                }
+
+                Thread.Sleep(sleepDuration); // 睡眠指定的毫秒数
+            }
+
             JObject message = new JObject();
             message.Add("greeting", new JValue($"Hello, {name}!"));
-            return (message);
+            
+            return (message); 
         }
     }
 }

@@ -4,7 +4,7 @@ import sys
 
 interval = sys.argv[1]
 
-file = open("./benchmark/" + interval + "-hours/invoke_actions.sh", "r")
+file = open("./benchmark/" + interval + "-hours/invoke_time.sh", "r")
 
 lines = file.readlines()
 
@@ -18,6 +18,10 @@ invoke_start = time.time()
 
 for line in lines:
     if "EOF" == line:
+        interval = time.time() - invoke_start
+        if interval < 1:
+            time.sleep(1 - interval)
+        invoke_start = time.time()
         continue
     else:
         os.system(line)
