@@ -17,7 +17,7 @@ start = time.time() * 1000000
 invoke_start = time.time()
 
 for line in lines:
-    if "EOF" == line:
+    if "EOF " == line:
         interval = time.time() - invoke_start
         if interval < 1:
             time.sleep(1 - interval)
