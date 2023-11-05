@@ -19,8 +19,8 @@ invoke_start = time.time()
 for line in lines:
     if "EOF " == line:
         interval = time.time() - invoke_start
-        if interval < 1:
-            time.sleep(1 - interval)
+        if interval < 0.85:
+            time.sleep(0.85 - interval)
         invoke_start = time.time()
         continue
     else:
